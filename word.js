@@ -1,11 +1,10 @@
 var inquirer = require("inquirer");
 var Letter = require("./letter");
 
-var wordArr = ["aba", "cdec", "fghif", "jk lmnj", "opq rso", "tuv wxyzt"];
+var wordArr = ["ned stark", "arya stark", "jon snow", "robb stark", "rickon stark", "bran stark", "sansa stark", "benjen stark", "lyanna stark", "catelyn tully", "lysa tully", "edmure tully", "brynden tully", "hoster tully", "robert baratheon", "stannis baratheon", "renly baratheon", "joffrey baratheon", "myrcella baratheon", "tommen baratheon", "tywin lannister", "kevan lannister", "cersei lannister", "jaime lannister", "tyrion lannister", "lancel lannister", "maester aemon", "aerys targaryen", "viserys targaryen", "daenerys targaryen", "rhaegar targaryen", "doran martell", "trystane martell", "oberyn martell", "ellaria sand", "obara sand", "nymeria sand", "tyene sand", "balon greyjoy", "euron greyjoy", "theon greyjoy", "yara greyjoy", "waldur frey", "khal drogo", "roose bolton", "ramsay bolton", "walda frey", "sandor clegane", "gregor clegane", "jeor mormont", "jorah mormont", "samwell tarly", "petyr baelish", "varys", "bronn", "shae", "ilyn payne", "barristan selmy", "grand maester pycelle", "olenna tyrell", "mace tyrell", "margaery tyrell", "loras tyrell", "randyll tarly", "dickon tarly", "brienne of tarth", "grey worm", "gendry", "gilly", "tormund giantsbane", "jaquen hagar", "high sparrow", "hodor", "hot pie", "melisandre", "qyburn", "meera reed", "jojen reed", "davos seaworth", "talisa stark", "ygritte", "daario naharis", "missandei", "meryn trant", "grenn", "osha", "ros", "rodrik cassel", "maester luwin", "rast", "pyp", "alliser thorne", "beric dondarrion", "podrick payne", "thoros of myr", "yohn royce", "jon arryn", "robin arryn", "septa mordane", "craster", "xaro xhoan daxos", "pyat pree", "qhorin halfhand", "myranda", "locke", "mance rayder", "tycho nestoris", "septa unella", "greatjon umber", "syrio forel", "illrio mopatis", "torrhen karstark", "quaithe"];
 var guessedLetters = [];
 
 var Word = function() {
-	guessesLeft = 5;
 	this.displayedString = "";
 	this.encodedAnswer = "";
 	this.answer = "";
@@ -114,6 +113,8 @@ var Word = function() {
 		]).then(function(inquirerResponse) {
 			if (inquirerResponse.continue) {
 				word = new Word();
+				guessedLetters = [];
+				guessesLeft = 5;
 				word.newGame();
 			}
 			else {
