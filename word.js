@@ -5,6 +5,8 @@ var wordArr = ["ned stark", "arya stark", "jon snow", "robb stark", "rickon star
 var guessedLetters = [];
 
 var Word = function() {
+	guessedLetters = [];
+	guessesLeft = 5;
 	this.displayedString = "";
 	this.encodedAnswer = "";
 	this.answer = "";
@@ -113,8 +115,6 @@ var Word = function() {
 		]).then(function(inquirerResponse) {
 			if (inquirerResponse.continue) {
 				word = new Word();
-				guessedLetters = [];
-				guessesLeft = 5;
 				word.newGame();
 			}
 			else {
