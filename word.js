@@ -33,10 +33,12 @@ var Word = function() {
 	this.displayTheWord = function(text) {
 		this.displayedString = "";
 		for (var i = 0; i < text.length; i++) {
-			this.displayedString += this.encodedAnswer[i];
+			this.displayedString += text[i];
 			this.displayedString += " ";
 		}
+		console.log("");
 		console.log(this.displayedString);
+		console.log("");
 	}
 
 	this.checkAnswer = function(userInput) {
@@ -66,13 +68,16 @@ var Word = function() {
 
 			// --- If there are no more guesses left, you lose.  Allow the user to play again
 			else {
-				console.log("You lose");
+				console.log("");
+				this.displayTheWord(this.answer);
+				console.log("");
+				console.log("You lose :(\n");
 				this.playAgain();
 			}
 		}
 		else {
 			if (this.encodedAnswer.indexOf("_") == -1) {
-				console.log("YOU WIN!!");
+				console.log("YOU WIN!!\n");
 				this.playAgain();
 			}
 			else {
@@ -91,6 +96,10 @@ var Word = function() {
 		]).then(function(inquirerResponse) {
 			if (inquirerResponse.userInput.length > 1) {
 				console.log("\nPlease only enter one letter.\n");
+				obj.promptUser();
+			}
+			else if (inquirerResponse.userInput.charCodeAt(0) < 96 || inquirerResponse.userInput.charCodeAt(0) > 123) {
+				console.log("\nPlease enter a letter.\n");
 				obj.promptUser();
 			}
 			else if (inquirerResponse.userInput.length < 1) {
