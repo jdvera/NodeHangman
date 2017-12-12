@@ -60,7 +60,7 @@ var Word = function() {
 			guessesLeft--;
 			if (guessesLeft > 0) {
 				console.log("\nIncorrect");
-				console.log("\nGuessesLeft: " + guessesLeft);
+				console.log("\nGuessesLeft: " + guessesLeft + "\n");
 				this.promptUser();
 			}
 
@@ -76,7 +76,7 @@ var Word = function() {
 				this.playAgain();
 			}
 			else {
-				console.log("Correct!");
+				console.log("\nCorrect!\n");
 				this.promptUser();
 			}
 		}
@@ -90,11 +90,15 @@ var Word = function() {
 		}
 		]).then(function(inquirerResponse) {
 			if (inquirerResponse.userInput.length > 1) {
-				console.log("Please only input one letter.\n");
+				console.log("\nPlease only enter one letter.\n");
+				obj.promptUser();
+			}
+			else if (inquirerResponse.userInput.length < 1) {
+				console.log("\nPlease enter at least one letter.\n");
 				obj.promptUser();
 			}
 			else if (guessedLetters.indexOf(inquirerResponse.userInput) != -1) {
-				console.log("You've guessed that letter already.\n");
+				console.log("\nYou've guessed that letter already.\n");
 				obj.promptUser();
 			}
 			else {
